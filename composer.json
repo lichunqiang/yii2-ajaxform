@@ -1,0 +1,21 @@
+{
+  "name": "light/yii2-ajaxform",
+  "description": "yii2 activeform ActiveForm ajax",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "lichunqiang",
+      "email": "light-li@hotmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "^2.0.6",
+    "bower-asset/jquery-form": "3.5.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0"
+  }
+}
