@@ -26,8 +26,8 @@ use yii\web\JsExpression;
 
 ActiveForm::begin([
 	'ajaxSubmitOptions' => [
-		'success' => 'function(response) {console.log(response)}',
-		'complete' => 'function() {console.log("request completed.")}'
+		'success' => new JsExpression('function(response) {console.log(response)}'),
+		'complete' => new JsExpression('function() {console.log("request completed.")}')
 	]
 ])
 

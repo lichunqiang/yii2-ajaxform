@@ -21,17 +21,5 @@
     "psr-4": {
       "light\\widgets\\": "src"
     }
-  },
-  "extra": {
-    "asset-repositories": {
-      "bower-asset/jquery-form": {
-        "type": "bower-vcs",
-        "url": "https://github.com/malsup/form.git"
-      }
-    },
-    "asset-installer-paths": {
-      "npm-asset-library": "vendor/npm",
-      "bower-asset-library": "vendor/bower"
-    }
   }
 }

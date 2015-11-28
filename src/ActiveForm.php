@@ -24,6 +24,7 @@ use yii\widgets\ActiveFormAsset;
  *
  * @package light\widgets
  * @version 1.0.0
+ * @author lichunqiang <light-li@hotmail.com>
  */
 class ActiveForm extends \yii\widgets\ActiveForm
 {
