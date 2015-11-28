@@ -1,4 +1,4 @@
-<?php light\widgets;
+<?php namespace light\widgets;
 
 use Yii;
 use yii\base\InvalidCallException;
@@ -9,10 +9,10 @@ use yii\widgets\ActiveFormAsset;
 /**
  * Usage:
  * ~~~
+ * use light\widgets\ActiveForm;
  * use yii\web\JsExpression;
  *
  * ActiveForm::begin([
- *     'enableAjaxSubmit' => true,
  *     'ajaxSubmitOptions' => [
  *         'success' => new JsExpression('function(response) {//...}'),
  *         'complete' => new JsExpression('function(xhr, msg, $form) {//..}'),
@@ -30,7 +30,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /**
      * @var boolean If enable the ajax submit
      */
-    public $enableAjaxSubmit = false;
+    public $enableAjaxSubmit = true;
     /**
      * @var array The options passed to jquery.form, Please see the jquery.form document
      */
