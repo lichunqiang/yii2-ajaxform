@@ -1,4 +1,15 @@
-<?php namespace light\widgets;
+<?php
+
+/*
+ * This file is part of the light/yii2-ajaxform.
+ *
+ * (c) lichunqiang <light-li@hotmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+namespace light\widgets;
 
 use Yii;
 use yii\base\InvalidCallException;
@@ -10,7 +21,7 @@ use yii\widgets\ActiveFormAsset;
  * Usage:
  * ~~~
  * use light\widgets\ActiveForm;
- * use yii\web\JsExpression;
+ * use yii\web\JsExpression;.
  *
  * ActiveForm::begin([
  *     'ajaxSubmitOptions' => [
@@ -22,14 +33,14 @@ use yii\widgets\ActiveFormAsset;
  *
  * ~~~
  *
- * @package light\widgets
  * @version 1.0.0
+ *
  * @author lichunqiang <light-li@hotmail.com>
  */
 class ActiveForm extends \yii\widgets\ActiveForm
 {
     /**
-     * @var boolean If enable the ajax submit
+     * @var bool If enable the ajax submit
      */
     public $enableAjaxSubmit = true;
     /**
@@ -38,7 +49,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
     public $ajaxSubmitOptions = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function run()
     {
@@ -47,10 +58,10 @@ class ActiveForm extends \yii\widgets\ActiveForm
         }
 
         if ($this->enableClientScript) {
-            $id = $this->options['id'];
-            $options = Json::htmlEncode($this->getClientOptions());
+            $id         = $this->options['id'];
+            $options    = Json::htmlEncode($this->getClientOptions());
             $attributes = Json::htmlEncode($this->attributes);
-            $view = $this->getView();
+            $view       = $this->getView();
             ActiveFormAsset::register($view);
             if ($this->enableAjaxSubmit) {
                 AjaxFormAsset::register($view);

@@ -1,6 +1,7 @@
 <?php
 use light\widgets\ActiveForm;
- ?>
+
+?>
 
 
 <?php $form = ActiveForm::begin([
