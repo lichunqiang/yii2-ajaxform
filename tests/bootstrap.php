@@ -21,6 +21,6 @@ if (is_file($composerAutoload)) {
 } else {
     require_once __DIR__.'/../../../autoload.php';
 }
-require_once __DIR__.'/../framework/Yii.php';
+require_once __DIR__.'/../vendor/yiisoft/yii2/Yii.php';
 Yii::setAlias('@lightunit', __DIR__);
 require_once __DIR__.'/TestCase.php';
