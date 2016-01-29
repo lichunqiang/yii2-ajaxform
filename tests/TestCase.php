@@ -9,18 +9,16 @@
  * with this source code in the file LICENSE.
  */
 
-namespace lightunit;
+namespace tests;
+
+use yii\helpers\ArrayHelper;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Clean up after test.
-     * By default the application created with [[mockApplication]] will be destroyed.
-     */
-    protected function tearDown()
+    protected function setUp()
     {
-        parent::tearDown();
-        $this->destroyApplication();
+        parent::setUp();
+        $this->mockWebApplication();
     }
 
     protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
@@ -28,12 +26,13 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         new $appClass(ArrayHelper::merge([
             'id'         => 'testapp',
             'basePath'   => __DIR__,
-            'vendorPath' => $this->getVendorPath(),
+            'vendorPath' => __DIR__ . '/../vendor',
             'components' => [
                 'request' => [
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
                     'scriptFile'          => __DIR__.'/index.php',
                     'scriptUrl'           => '/index.php',
+                    'url' => '/test'
                 ],
             ],
         ], $config));

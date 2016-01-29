@@ -19,7 +19,7 @@ cache:
 
 # script run before anything
 before_script:
-    - composer global require "fxp/composer-asset-plugin:~1.1.0"
+    - composer global require "fxp/composer-asset-plugin:~1.1.1"
     - composer install
     - cp phpunit.xml.dist phpunit.xml
 
@@ -29,3 +29,7 @@ install:
 
 script:
     phpunit --configuration phpunit.xml
+
+notifications:
+    on_success: never
+    on_failure: always
