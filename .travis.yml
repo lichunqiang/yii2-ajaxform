@@ -1,9 +1,9 @@
 language: php
 
 php:
-    - 5.4
     - 5.5
     - 5.6
+    - 7
 
 # faster builds on new travis setup not using sudo
 sudo: false
@@ -28,7 +28,7 @@ install:
 
 
 script:
-    phpunit --configuration phpunit.xml
+    vendor/bin/phpunit --configuration phpunit.xml
 
 notifications:
     on_success: never
