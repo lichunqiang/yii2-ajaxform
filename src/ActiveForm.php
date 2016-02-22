@@ -13,6 +13,7 @@ namespace light\widgets;
 
 use Yii;
 use yii\base\InvalidCallException;
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\ActiveFormAsset;
@@ -33,7 +34,7 @@ use yii\widgets\ActiveFormAsset;
  *
  * ~~~
  *
- * @version 1.0.0
+ * @version 1.0.1
  *
  * @author lichunqiang <light-li@hotmail.com>
  */
@@ -47,6 +48,27 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @var array The options passed to jquery.form, Please see the jquery.form document
      */
     public $ajaxSubmitOptions = [];
+    /**
+     * @var string For `yii\bootstrap\ActiveForm` compatibility.
+     */
+    public $layout;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        if ($this->layout) {
+            if (!in_array($this->layout, ['default', 'horizontal', 'inline'])) {
+                throw new InvalidConfigException('Invalid layout type: ' . $this->layout);
+            }
+            if ($this->layout !== 'default') {
+                Html::addCssClass($this->options, 'form-' . $this->layout);
+            }
+        }
+
+        parent::init();
+    }
 
     /**
      * {@inheritdoc}

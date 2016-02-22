@@ -16,7 +16,7 @@ use yii\web\AssetBundle;
 /**
  * jquery.form.js asset bundle.
  *
- * @version 1.0.0
+ * @version 1.0.1
  *
  * @author lichunqiang <ligith-li@hotmail.com>
  *
