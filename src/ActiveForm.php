@@ -88,7 +88,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
             if ($this->enableAjaxSubmit) {
                 AjaxFormAsset::register($view);
                 $_options = Json::htmlEncode($this->ajaxSubmitOptions);
-                $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options).on('beforeSubmit', function(_event) { jQuery(_event.target).ajaxSubmit($_options); return false;});");
+                $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options).on('beforeSubmit', function(_event) { var form = jQuery(this), _data = form.data('yiiActiveForm'); _data.submitting = _data.validated = true; jQuery(_event.target).ajaxSubmit($_options); _event.result = false; jQuery(document).ajaxComplete(function(event, request, settings) { if(!event.ajaxTrigger) { var event = jQuery.Event('ajaxComplete'); event.ajaxTrigger = true; form.trigger(event, [request, request.statusText]); } }); });");
             } else {
                 $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options);");
             }
