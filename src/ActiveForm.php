@@ -34,7 +34,7 @@ use yii\widgets\ActiveFormAsset;
  *
  * ~~~
  *
- * @version 1.0.1
+ * @version 1.0.2
  *
  * @author lichunqiang <light-li@hotmail.com>
  */
@@ -52,7 +52,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @var string For `yii\bootstrap\ActiveForm` compatibility.
      */
     public $layout;
-
+    
     /**
      * @inheritdoc
      */
@@ -66,34 +66,23 @@ class ActiveForm extends \yii\widgets\ActiveForm
                 Html::addCssClass($this->options, 'form-' . $this->layout);
             }
         }
-
+        
         parent::init();
     }
-
+    
     /**
      * {@inheritdoc}
      */
     public function run()
     {
-        if (!empty($this->_fields)) {
-            throw new InvalidCallException('Each beginField() should have a matching endField() call.');
+        parent::run();
+        
+        if ($this->enableAjaxSubmit) {
+            $id = $this->options['id'];
+            $view = $this->getView();
+            AjaxFormAsset::register($view);
+            $_options = Json::htmlEncode($this->ajaxSubmitOptions);
+            $view->registerJs("jQuery('#$id').yiiActiveForm().on('beforeSubmit', function(_event) { jQuery(_event.target).ajaxSubmit($_options); return false;});");
         }
-
-        if ($this->enableClientScript) {
-            $id         = $this->options['id'];
-            $options    = Json::htmlEncode($this->getClientOptions());
-            $attributes = Json::htmlEncode($this->attributes);
-            $view       = $this->getView();
-            ActiveFormAsset::register($view);
-            if ($this->enableAjaxSubmit) {
-                AjaxFormAsset::register($view);
-                $_options = Json::htmlEncode($this->ajaxSubmitOptions);
-                $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options).on('beforeSubmit', function(_event) { jQuery(_event.target).ajaxSubmit($_options); return false;});");
-            } else {
-                $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options);");
-            }
-        }
-
-        echo Html::endForm();
     }
 }
