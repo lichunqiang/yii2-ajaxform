@@ -1,5 +1,11 @@
-yii2-ajaxform
----------
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">Yii2 Ajax Form</h1>
+    <br>
+</p>
+
 [![Build Status](https://img.shields.io/travis/lichunqiang/yii2-ajaxform.svg?style=flat-square)](http://travis-ci.org/lichunqiang/yii2-ajaxform)
 [![version](https://img.shields.io/packagist/v/light/yii2-ajaxform.svg?style=flat-square)](https://packagist.org/packages/light/yii2-ajaxform)
 [![Download](https://img.shields.io/packagist/dt/light/yii2-ajaxform.svg?style=flat-square)](https://packagist.org/packages/light/yii2-ajaxform)
