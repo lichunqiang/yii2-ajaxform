@@ -11,12 +11,9 @@
 
 namespace light\widgets;
 
-use Yii;
-use yii\base\InvalidCallException;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\widgets\ActiveFormAsset;
 
 /**
  * Usage:
@@ -34,7 +31,7 @@ use yii\widgets\ActiveFormAsset;
  *
  * ~~~
  *
- * @version 1.0.2
+ * @version 1.0.3
  *
  * @author lichunqiang <light-li@hotmail.com>
  */
@@ -66,7 +63,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
                 Html::addCssClass($this->options, 'form-' . $this->layout);
             }
         }
-        
+
         parent::init();
     }
     
@@ -75,8 +72,6 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public function run()
     {
-        parent::run();
-        
         if ($this->enableAjaxSubmit) {
             $id = $this->options['id'];
             $view = $this->getView();
@@ -84,5 +79,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
             $_options = Json::htmlEncode($this->ajaxSubmitOptions);
             $view->registerJs("jQuery('#$id').yiiActiveForm().on('beforeSubmit', function(_event) { jQuery(_event.target).ajaxSubmit($_options); return false;});");
         }
+        
+        return parent::run();
     }
 }
